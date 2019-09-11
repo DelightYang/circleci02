@@ -22,10 +22,11 @@ jobs:
             - v1-dependencies-
 
       - run:
+          name: mvn dependency
+          command: mvn dependency:go-offline
+      - run:
           name: Create Package
-          command:
-          mvn dependency:go-offline
-          echo "master"
+          command: echo "master"
 
       - save_cache:
           paths:
@@ -36,9 +37,10 @@ jobs:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
-      - checkout
+      - Testing
+      - run: mvn integration-test
       - run:
-          name: Test
+          name: Test Finished
           command:  echo "test finished"
 
 workflows:
