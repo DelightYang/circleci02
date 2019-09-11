@@ -5,13 +5,17 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-#      - run:
+      - run:
+          name: Create Package
+          command: mvn clean package
   test:
     docker:
       - image: circleci/openjdk:8-jdk
     steps:
       - checkout
-#      - run:
+      - run:
+          name: Test
+          command: mvn test
 workflows:
   version: 2
   build_and_test:
