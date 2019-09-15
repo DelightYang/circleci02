@@ -37,9 +37,8 @@ jobs:
       - image: circleci/openjdk:8-jdk
     steps:
       - Testing
-      - run: mvn integration-test
       - run:
-          name: Test Finished
+          name: MVN TEST
           command:  sh 'mvn test'
 
 
